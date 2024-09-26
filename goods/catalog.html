@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Каталог товаров</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        /* Хедер: выравнивание ссылок по центру */
+        .navbar-nav {
+            flex-grow: 1;
+            justify-content: center;
+        }
+
+        .product-card {
+            width: 343.68px;
+            height: 343.68px;
+            background-color: #f0f0f0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden; /* Скрытие части изображения, если оно превышает размеры карточки */
+        }
+        .product-title, .product-price {
+            text-align: center;
+        }
+        .product-title {
+            font-size: 16px;
+            margin-top: 10px;
+        }
+        .product-price {
+            font-size: 14px;
+            color: #999;
+        }
+        .pagination {
+            justify-content: center;
+        }
+        .pagination .page-item .page-link {
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .pagination .page-item.active .page-link {
+            background-color: black;
+            color: white;
+            border-color: black;
+        }
+
+        /* Отображение товаров на мобильной версии */
+        @media (max-width: 768px) {
+            .product-card {
+                width: 100%;
+                height: auto;
+            }
+            /* Меню слева от корзины */
+            .navbar-collapse {
+                flex-direction: row; /* Размещаем элементы в строку */
+                justify-content: space-between; /* Распределяем пространство между элементами */
+                align-items: center; /* Центрируем по вертикали */
+            }
+        }
+    </style>
+</head>
+<body>
+
+<!-- Хедер -->
+<header>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container d-flex justify-content-between align-items-center">
+            <a class="navbar-brand" href="#">
+                <img src="logo-stub.png" alt="Logo" style="height: 40px;">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav mx-auto">
+                    <li class="nav-item"><a class="nav-link" href="#">Link 1</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Link 2</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Link 3</a></li>
+                </ul>
+                <div class="ms-auto d-lg-none"> <!-- Скрываем корзину на больших экранах -->
+                    <a class="nav-link" href="#"><i class="bi bi-cart"></i> Cart</a>
+                </div>
+            </div>
+            <div class="d-none d-lg-block ms-auto"> <!-- Показываем корзину только на больших экранах -->
+                <a class="nav-link" href="#"><i class="bi bi-cart"></i> Cart</a>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<!-- Контент каталога -->
+<main class="container my-5">
+    <div class="row justify-content-center">
+        <!-- Сетка товаров -->
+        <div class="col-12">
+            <div class="row row-cols-1 row-cols-md-3 g-4 justify-content-center">
+                <!-- Карточка товара -->
+                <div class="col d-flex flex-column align-items-center">
+                    <div class="product-card">
+                        <img src="path-to-your-product-image.jpg" alt="Название товара" class="img-fluid" style="max-width: 100%; max-height: 100%; object-fit: contain;">
+                    </div>
+                    <div class="product-title">Название продукта</div>
+                    <div class="product-price">от 9 999 ₽</div>
+                </div>
+
+                <!-- Дублируем карточки товара для демонстрации сетки -->
+                <div class="col d-flex flex-column align-items-center">
+                    <div class="product-card">
+                        <img src="path-to-your-product-image-2.jpg" alt="Название товара 2" class="img-fluid" style="max-width: 100%; max-height: 100%; object-fit: contain;">
+                    </div>
+                    <div class="product-title">Название продукта 2</div>
+                    <div class="product-price">от 8 999 ₽</div>
+                </div>
+
+                <!-- Добавь еще карточки товара... -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Пагинация -->
+    <nav aria-label="Page navigation example">
+        <ul class="pagination mt-4">
+            <li class="page-item disabled">
+                <a class="page-link" href="#" tabindex="-1" aria-disabled="true">1</a>
+            </li>
+            <li class="page-item"><a class="page-link" href="#">2</a></li>
+            <li class="page-item"><a class="page-link" href="#">3</a></li>
+        </ul>
+    </nav>
+</main>
+
+<!-- Футер -->
+<footer class="bg-light text-center text-lg-start">
+    <div class="container p-4">
+        <div class="row">
+            <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+                <h5 class="text-uppercase">Связь с нами</h5>
+                <ul class="list-unstyled mb-0">
+                    <li><a href="#" class="text-dark">Instagram</a></li>
+                    <li><a href="#" class="text-dark">Facebook</a></li>
+                    <li><a href="#" class="text-dark">+7 123 456 78 90</a></li>
+                </ul>
+            </div>
+            <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+                <h5 class="text-uppercase">Ссылки 1</h5>
+                <ul class="list-unstyled">
+                    <li><a href="#" class="text-dark">Link 1</a></li>
+                    <li><a href="#" class="text-dark">Link 2</a></li>
+                </ul>
+            </div>
+            <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+                <h5 class="text-uppercase">Ссылки 2</h5>
+                <ul class="list-unstyled">
+                    <li><a href="#" class="text-dark">Link 3</a></li>
+                    <li><a href="#" class="text-dark">Link 4</a></li>
+                </ul>
+            </div>
+            <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+                <h5 class="text-uppercase">Логотип</h5>
+                <img src="static/images/logo-stub.png" alt="Logo" style="height: 40px;">
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
