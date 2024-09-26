@@ -1,10 +1,235 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Карточка товара</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f9f9f9;
+        }
+
+        .product-container {
+            margin: 50px auto;
+            max-width: 1200px;
+        }
+
+        .product-image {
+            width: 100%;
+            height: auto;
+            background-color: #eaeaea;
+        }
+
+        .product-thumbnails img {
+            width: 100%;
+            height: auto;
+            background-color: #eaeaea;
+        }
+
+        .product-info {
+            position: sticky;
+            top: 100px; /* Фиксируем блок при скролле */
+        }
+
+        .product-info h1 {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .product-price {
+            font-size: 20px;
+            color: red;
+            margin-top: 10px;
+        }
+
+        .old-price {
+            text-decoration: line-through;
+            margin-right: 10px;
+        }
+
+        .btn-buy {
+            background-color: black;
+            color: white;
+            padding: 10px 20px;
+            margin-top: 20px;
+        }
+
+        .product-description {
+            margin-top: 30px;
+        }
+
+        .product-icons {
+            margin-top: 30px;
+            font-size: 24px;
+            display: flex;
+            gap: 15px;
+        }
+
+        .product-icons .icon {
+            position: relative;
+            display: inline-block;
+        }
+
+        .product-icons .icon img {
+            width: 40px;
+            height: 40px;
+        }
+
+        /* Фиксируемый блок внизу страницы */
+        .fixed-block {
+            position: fixed;
+            bottom: 0;
+            right: 0;
+            background-color: white;
+            width: 300px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            display: none;
+        }
+
+        /* Когда доходим до конца изображений */
+        .scroll-end .fixed-block {
+            display: block;
+        }
+    </style>
 </head>
 <body>
 
+<!-- Хедер -->
+<header>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container d-flex justify-content-between align-items-center">
+            <a class="navbar-brand" href="#">
+                <img src="/static/images/logo-stub.png" alt="Logo" style="height: 40px;">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav mx-auto">
+                    <li class="nav-item"><a class="nav-link" href="#">Link 1</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Link 2</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Link 3</a></li>
+                </ul>
+            </div>
+            <div class="ms-auto">
+                <a class="nav-link" href="#"><i class="bi bi-cart"></i> Cart</a>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<!-- Контент карточки товара -->
+<div class="container product-container">
+    <div class="row">
+        <!-- Левая колонка с изображениями -->
+        <div class="col-md-6">
+            <div class="product-image">
+                <img src="path-to-your-main-product-image.jpg" alt="Главное изображение товара" class="img-fluid">
+            </div>
+
+            <div class="row mt-3">
+                <div class="col-6 product-thumbnails">
+                    <img src="path-to-your-thumbnail-1.jpg" alt="Превью 1" class="img-fluid">
+                </div>
+                <div class="col-6 product-thumbnails">
+                    <img src="path-to-your-thumbnail-2.jpg" alt="Превью 2" class="img-fluid">
+                </div>
+            </div>
+        </div>
+
+        <!-- Правая колонка с информацией -->
+        <div class="col-md-6">
+            <div class="product-info">
+                <h1>Название товара</h1>
+
+                <div class="product-price">
+                    <span class="old-price">99 999 ₽</span>
+                    <span class="new-price">9 999 ₽</span>
+                </div>
+
+                <div class="product-variants mt-3">
+                    <label for="variant-select">Варианты:</label>
+                    <select id="variant-select" class="form-select">
+                        <option value="option1">Option 1</option>
+                        <option value="option2">Option 2</option>
+                        <option value="option3">Option 3</option>
+                    </select>
+                </div>
+
+                <button class="btn btn-buy">В корзину</button>
+
+                <div class="product-description">
+                    <h4>Описание</h4>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris efficitur felis ut nisl bibendum varius.</p>
+                </div>
+
+                <div class="product-composition">
+                    <h4>Состав</h4>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum scelerisque sit amet erat ac scelerisque.</p>
+                </div>
+
+                <div class="product-icons">
+                    <div class="icon" data-bs-toggle="tooltip" title="Описание иконки 1">
+                        <img src="/static/images/2.png" alt="Описание иконки 1">
+                    </div>
+                    <div class="icon" data-bs-toggle="tooltip" title="Описание иконки 2">
+                        <img src="/static/images/11.png" alt="Описание иконки 2">
+                    </div>
+                    <div class="icon" data-bs-toggle="tooltip" title="Описание иконки 3">
+                        <img src="/static/images/15.png" alt="Описание иконки 3">
+                    </div>
+                    <div class="icon" data-bs-toggle="tooltip" title="Ручная стирка">
+                        <img src="/static/images/20.png" alt="Ручная стирка">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Футер -->
+<footer class="bg-light text-center text-lg-start">
+    <div class="container p-4">
+        <div class="row">
+            <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+                <h5 class="text-uppercase">Связь с нами</h5>
+                <ul class="list-unstyled mb-0">
+                    <li><a href="#" class="text-dark">Instagram</a></li>
+                    <li><a href="#" class="text-dark">Facebook</a></li>
+                    <li><a href="#" class="text-dark">+7 123 456 78 90</a></li>
+                </ul>
+            </div>
+            <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+                <h5 class="text-uppercase">Ссылки 1</h5>
+                <ul class="list-unstyled">
+                    <li><a href="#" class="text-dark">Link 1</a></li>
+                    <li><a href="#" class="text-dark">Link 2</a></li>
+                </ul>
+            </div>
+            <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+                <h5 class="text-uppercase">Ссылки 2</h5>
+                <ul class="list-unstyled">
+                    <li><a href="#" class="text-dark">Link 3</a></li>
+                    <li><a href="#" class="text-dark">Link 4</a></li>
+                </ul>
+            </div>
+            <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+                <h5 class="text-uppercase">Логотип</h5>
+                <img src="static/images/logo-stub.png" alt="Logo" style="height: 40px;">
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+    // Инициализация тултипов
+    var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+    var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+        return new bootstrap.Tooltip(tooltipTriggerEl)
+    })
+</script>
 </body>
 </html>
